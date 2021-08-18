@@ -1,0 +1,31 @@
+# 需要部署上线的时候再用这个prod配置，记得把下面信息都改成你自己的
+# 去application.yml里配置active: prod就可以运行本地prod环境
+server:
+  port: 443  #https加密端口号 443
+  ssl: #SSL证书路径 一定要加上classpath:
+    key-store: classpath:xiaoshitou.jks
+    #SSL证书密码（密码在第一步的keystorePass.txt中）
+    key-store-password: pa2pzzb8436
+    #证书类型
+    key-store-type: JKS
+  servlet:
+    context-path: /diancan
+
+#    记得把数据库账号密码改为你服务器里mysql的账号和密码
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/diancan?characterEncoding=utf-8&useSSL=false&serverTimeZone=UTC
+      &useOldAliasMetadataBehavior=true&allowPublicKeyRetrieval=true
+#    url: jdbc:mysql://192.168.0.107:3306/diancan?useUnicode=true&characterEncoding=utf-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+#    driver‐class‐name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1128
+    hikari:
+      connection-init-sql: set names utf8mb4
+    tomcat:
+      init-s-q-l: SET NAMES utf8mb4 #这是最重要的一步
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+

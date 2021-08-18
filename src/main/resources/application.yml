@@ -1,0 +1,4 @@
+spring:
+  profiles:
+    active: test  #本地电脑运行测试环境，记得去application-test.yml里修改配置
+#    active: prod  #部署服务器https时才用这个prod线上配置，记得去application-prod.yml里修改配置
